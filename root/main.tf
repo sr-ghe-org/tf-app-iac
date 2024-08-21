@@ -4,7 +4,7 @@ module "my-instance-template" {
   source               = "app.terraform.io/sr-test-org/vm-instance-template/gcp"
   version = "0.0.1"
   name_prefix          = "my-it"
-  service_account      = google_service_account.default.id
+  service_account      = google_service_account.default.email
   project_id           = var.project_id
   source_image_project = var.source_image_project
   source_image         = var.source_image
