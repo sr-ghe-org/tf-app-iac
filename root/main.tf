@@ -1,7 +1,7 @@
 
 
 module "my-instance-template" {
-  source               = "app.terraform.io/sr-test-org/gcp-workload-identity/org"
+  source               = "app.terraform.io/sr-test-org/vm-instance-template"
   version = "0.0.1"
   name_prefix          = "my-it"
   service_account      = google_service_account.default.id
