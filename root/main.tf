@@ -1,15 +1,15 @@
 locals {
   ce_sa = {
-  email  = google_service_account.default.email
-  scopes = ["cloud-platform"]
-}
+    email  = google_service_account.default.email
+    scopes = ["cloud-platform"]
+  }
 }
 
 
 
 module "my-instance-template" {
   source               = "app.terraform.io/sr-test-org/vm-instance-template/gcp"
-  version = "0.0.1"
+  version              = "0.0.1"
   name_prefix          = "my-it"
   service_account      = local.ce_sa
   project_id           = var.project_id
@@ -19,5 +19,5 @@ module "my-instance-template" {
   network              = var.network
   subnetwork           = var.subnetwork
   subnetwork_project   = var.subnetwork_project
-  depends_on = [ google_project_iam_member.tfc_sa_role_binding ]
+  depends_on           = [google_project_iam_member.tfc_sa_role_binding]
 }

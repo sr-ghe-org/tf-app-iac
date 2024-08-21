@@ -2,15 +2,15 @@ locals {
   tfc_sa_roles = "roles/editor"
 }
 resource "google_service_account" "default" {
-  project = var.project_id
+  project      = var.project_id
   account_id   = "service-account-id"
   display_name = "Service Account"
 }
 
 resource "google_project_iam_member" "logs_writer" {
   project = var.project_id
-  role = "roles/logging.logWriter"
-  member = "serviceAccount:${google_service_account.default.email}"
+  role    = "roles/logging.logWriter"
+  member  = "serviceAccount:${google_service_account.default.email}"
 }
 
 resource "google_project_iam_member" "tfc_sa_role_binding" {
