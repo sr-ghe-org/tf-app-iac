@@ -14,7 +14,7 @@ variable "region" {
 
 }
 variable "network" {
-
+    default = ""
 }
 variable "subnetwork" {
 
