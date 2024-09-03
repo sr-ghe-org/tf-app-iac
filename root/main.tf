@@ -23,7 +23,8 @@ module "example-it" {
 }
 
 module "example-mig" {
-  source              = "../../terraform-gcp-vm-managed-instance-group"
+  source              = "app.terraform.io/sr-test-org/vm-managed-instance-group/gcp"
+  version             = "0.0.1"
   hostname            = "example-mig"
   project_id          = var.project_id
   region              = var.region
