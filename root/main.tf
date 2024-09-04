@@ -66,11 +66,6 @@ module "network-internal-lb" {
   health_checks = [module.hc.health_checks["tcp-hc"]]
 
   ports                        = ["80"]
-  create_backend_firewall      = true
-  create_health_check_firewall = true
-
-  source_tags = []
-  target_tags = ["target-server"]
   backends = [
     { group = module.example-mig.instance_group, description = "mig desription", failover = false },
   ]
