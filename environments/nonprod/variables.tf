@@ -13,7 +13,9 @@ variable "source_image" {
 variable "region" {
   
 }
-
+variable "network" {
+  
+}
 variable "subnetwork" {
   
 }

@@ -16,7 +16,6 @@ module "example-it" {
   source_image_project = var.source_image_project
   source_image         = var.source_image
   region               = var.region
-  network              = var.network
   subnetwork           = var.subnetwork
   subnetwork_project   = var.subnetwork_project
   depends_on           = [google_project_iam_member.tfc_sa_role_binding]
