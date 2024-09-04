@@ -59,7 +59,7 @@ module "network-internal-lb" {
   project               = var.project_id
   network               = var.network
   subnetwork            = var.subnetwork
-  network_project       = var.network_project
+  network_project       = var.subnetwork_project
   global_access         = true
   name                  = "example-nlb-internal"
   load_balancing_scheme = "internal"
