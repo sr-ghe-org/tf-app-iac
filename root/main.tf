@@ -39,3 +39,40 @@ module "example-mig" {
       name = "http"
     }]
 }
+
+module "hc" {
+  source              = "app.terraform.io/sr-test-org/vm-health-check/gcp"
+  version             = "0.0.1"
+  project = var.project_id
+  region  = var.region
+  health_checks = [{
+    name               = "tcp-hc"
+    protocol           = "TCP"
+    port               = 80
+    check_interval_sec = 10
+  }]
+}
+
+module "network-internal-lb" {
+  source              = "app.terraform.io/sr-test-org/regional-passthrough-lb/gcp"
+  version             = "0.0.1"
+  project               = var.project_id
+  network               = var.network
+  subnetwork            = var.subnetwork
+  network_project       = var.network_project
+  global_access         = true
+  name                  = "example-nlb-internal"
+  load_balancing_scheme = "internal"
+
+  health_checks = [module.hc.health_checks["tcp-hc"]]
+
+  ports                        = ["80"]
+  create_backend_firewall      = true
+  create_health_check_firewall = true
+
+  source_tags = []
+  target_tags = ["target-server"]
+  backends = [
+    { group = module.example-mig.instance_group, description = "mig desription", failover = false },
+  ]
+}
