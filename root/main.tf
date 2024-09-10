@@ -54,7 +54,7 @@ module "hc" {
 
 module "network-internal-lb" {
   source              = "app.terraform.io/sr-test-org/regional-passthrough-lb/gcp"
-  version             = "0.0.1"
+  version             = "0.0.2"
   project               = var.project_id
   network               = var.network
   subnetwork            = var.subnetwork
