@@ -6,8 +6,8 @@ locals {
 
   metadata_startup_script =  <<EOF
     sudo yum install -y nfs-utils
-    sudo mkdir ${google_netapp_volume.test_volume.mount_options.export}
-    sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=3,tcp ${google_netapp_volume.test_volume.mount_options.export_full} ${google_netapp_volume.test_volume.mount_options.export}
+    sudo mkdir ${google_netapp_volume.test_volume.mount_options[0].export}
+    sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=3,tcp ${google_netapp_volume.test_volume.mount_options[0].export_full} ${google_netapp_volume.test_volume.mount_options[0].export}
   EOF
 }
 
