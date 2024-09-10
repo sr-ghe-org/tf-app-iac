@@ -1,4 +1,5 @@
 resource "google_netapp_storage_pool" "default" {
+  project = var.project_id
   name = "test-pool"
   location = "us-central1"
   service_level = "PREMIUM"
@@ -7,6 +8,7 @@ resource "google_netapp_storage_pool" "default" {
 }
 
 resource "google_netapp_volume" "test_volume" {
+  project = var.project_id
   location = "us-central1"
   name = "test-volume"
   capacity_gib = "100"
