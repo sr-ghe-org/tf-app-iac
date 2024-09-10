@@ -1,6 +1,6 @@
 data "google_compute_network" "network" {
   name    = var.network
-  project = var.project_id
+  project = var.subnetwork_project
 }
 
 resource "google_netapp_storage_pool" "default" {
