@@ -1,10 +1,15 @@
+data "google_compute_network" "network" {
+  name    = var.network
+  project = var.project_id
+}
+
 resource "google_netapp_storage_pool" "default" {
   project = var.project_id
   name = "test-pool"
   location = "us-central1"
   service_level = "PREMIUM"
   capacity_gib = "2048"
-  network = var.network
+  network = data.google_compute_network.network.id
 }
 
 resource "google_netapp_volume" "test_volume" {
