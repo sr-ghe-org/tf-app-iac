@@ -4,7 +4,7 @@ locals {
     scopes = ["cloud-platform"]
   }
 
-  metadata_startup_script =  <<EOF
+  metadata_startup_script = <<EOF
     sudo yum install -y nfs-utils
     sudo mkdir ${module.gcnv.storage_volumes.mount_options[0].export}
     sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=3,tcp ${module.gcnv.storage_volumes.mount_options[0].export_full} ${module.gcnv.storage_volumes.mount_options[0].export}

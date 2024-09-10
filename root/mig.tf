@@ -13,5 +13,5 @@ module "example-mig" {
     {
       port = 80
       name = "http"
-    }]
+  }]
 }
